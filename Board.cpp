@@ -23,7 +23,7 @@ Board::Board() {
 	numBugs = 100;
 	seed = 1;
 
-	int place[20][20] = { {}, {}};
+	place = make2Dint(size);
 
 	srand(seed);
 
@@ -35,7 +35,7 @@ Board::Board(int x, int b, int a, unsigned int s) {
 	numAnts = a;
 	numBugs = b;
 	seed = s;
-	int place[20][20] = { {}, {}};
+	place = make2Dint(size);
 	if (seed == 0)
 		srand(time(0));
 	else
