@@ -10,7 +10,6 @@
 
 #include "Organism.h"
 #include <bits/stdc++.h>
-#include <vector>
 
 class Board {
 public:
@@ -23,7 +22,7 @@ private:
 	int size;
 	int numBugs;
 	int numAnts;
-	vector< vector<int> > place; // 0 if there is no organism, 1 if bug, 2 if ant
+	int** place; // 0 if there is no organism, 1 if bug, 2 if ant
 	unsigned int seed;
 	Organism** gameBoard;
 	int getRnd(int top);
