@@ -15,8 +15,11 @@ public:
 	Ant(int x,int y);
 	Ant();
 	virtual ~Ant();
-	void move();
+	void move(Organism **gameBoard);
 	int getOrg();
+private:
+	const int breedLimit = 3;
+	int timeSinceBreed = 0;
 };
 
 #endif /* ANT_H_ */
