@@ -20,6 +20,8 @@ int main(int argc, char** argv) {
 	int seed = 1;
 	int pause = 1;
 
+	//nkdghkjl
+
 	//char** gameBoard;
 
 	/*for (int i = 0; i < argc; i++) {
