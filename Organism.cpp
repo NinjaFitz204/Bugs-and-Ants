@@ -11,7 +11,7 @@ Organism::Organism() {
 	// TODO Auto-generated constructor stub
 	xcord = 0;
 	ycord = 0;
-	whatOrg = 0;
+	whatOrg = 0;// o if nothing, 1 if ant, 2 if doodlebug
 
 }
 
@@ -19,8 +19,8 @@ Organism::~Organism() {
 	// TODO Auto-generated destructor stub
 }
 
-void Organism::move(){
-}
+/*void Organism::move(){
+}*/
 
 int Organism::getOrg(){
 	return whatOrg;

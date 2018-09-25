@@ -15,8 +15,11 @@ public:
 	Doodlebug(int x,int y);
 	Doodlebug();
 	virtual ~Doodlebug();
-	void move();
+	void move(Organism **gameBoard,size);
 	int getOrg();
+	int timeSinceBreed;
+	cont int breedLimit;
+
 };
 
 #endif /* DOODLEBUG_H_ */
