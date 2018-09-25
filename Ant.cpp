@@ -34,33 +34,53 @@ void Ant::move(Organism **board, size){
 	int moveLeft = 0;
 	int moveUp = 0;
 	int moveDown = 0;
+	bool done = false;
 	if (xcord < size -1) {
-		moveRight = checkOpen(xcord + 1, ycord);
+		moveRight = checkOpen(board, xcord + 1, ycord) * 2;
 		canMove++;
 	}
 	if (xcord > 0) {
-		moveLeft = checkOpen(xcord - 1, ycord);
+		moveLeft = checkOpen(board, xcord - 1, ycord) * 3;
 		canMove++;
 	}
 	if (ycord < size - 1) {
-		moveDown = checkOpen(xcord, ycord + 1);
+		moveDown = checkOpen(board, xcord,ycord + 1) * 4;
 		canMove++;
 	}
 	if (ycord > 0) {
-		moveUp = checkOpen(xcord, ycord - 1);
+		moveUp = checkOpen(board, xcord,ycord - 1) * 5;
 		canMove++;
 	}
+	int spotsToGo[] = { moveRight, moveLeft, moveUp, moveDown };
 	if (canMove > 0) {
 		int randomIndex;
 		while (!done) {
-			randomIndex = rand(sizeToRandomChoose);
+			randomIndex = spotsToGo[rand()%5];
 			if (randomIndex) {
 				done = true;
 			}
 		}
+		switch(randomIndex) {
+		case 2:
+			xcord++;
+			break;
+		case 3:
+			xcord--;
+			break;
+		case 4:
+			ycord++;
+			break;
+		case 5:
+			ycord --;
+			break;
+		}
 
 	}
 	timeSinceBreed++;
+}
+
+int checkOpen(Organism **board, int x, int y) {
+	if (board[x][y].getOrg)
 }
 
 int Ant::getOrg(){
