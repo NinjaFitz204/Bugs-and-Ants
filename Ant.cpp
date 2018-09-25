@@ -14,6 +14,7 @@ Ant::Ant(int x, int y){
 	whatOrg=1;
 	const int breedLimit = 3;
 	int timeSinceBreed = 0;
+	bool hasMoved = false;
 }
 
 Ant::Ant() {
@@ -80,9 +81,18 @@ void Ant::move(Organism **board, size){
 }
 
 int checkOpen(Organism **board, int x, int y) {
-	if (board[x][y].getOrg)
+	if (board[x][y].getOrg() == 0) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 
 int Ant::getOrg(){
 	return whatOrg;
+}
+
+void Ant::resetMove() {
+	hasMoved = false;
 }
