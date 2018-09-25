@@ -96,3 +96,7 @@ int Ant::getOrg(){
 void Ant::resetMove() {
 	hasMoved = false;
 }
+
+void Ant::didMove() {
+	hasMoved = true;
+}
