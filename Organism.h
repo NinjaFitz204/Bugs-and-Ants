@@ -12,15 +12,15 @@ class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual void move();
+	virtual void move()=0;
 	int getxcord();
 	int getycord();
 	void setX(int x);
 	void setY(int y);
 	int getOrg();
 	int xcord;
-		int ycord;
-		int whatOrg;
+	int ycord;
+	int whatOrg;// 0 if nothing, 1 if ant, 2 if doodlebug
 private:
 };
 
