@@ -29,7 +29,7 @@ Ant::~Ant() {
 	// TODO Auto-generated destructor stub
 }
 
-void Ant::move(Organism **board, size){
+void Ant::move(Organism **board, int size){
 	int canMove = 0;
 	int moveRight = 0;
 	int moveLeft = 0;
@@ -80,7 +80,7 @@ void Ant::move(Organism **board, size){
 	timeSinceBreed++;
 }
 
-int checkOpen(Organism **board, int x, int y) {
+int Ant::checkOpen(Organism **board, int x, int y) {
 	if (board[x][y].getOrg() == 0) {
 		return 1;
 	}

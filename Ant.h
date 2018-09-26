@@ -15,11 +15,15 @@ public:
 	Ant(int x,int y);
 	Ant();
 	virtual ~Ant();
-	void move(Organism **gameBoard);
+	void move(Organism **gameBoard, int size);
 	int getOrg();
+	void resetMove();
+	void didMove();
+	int checkOpen(Organism **board, int x, int y);
 private:
-	const int breedLimit = 3;
-	int timeSinceBreed = 0;
+	static const int breedLimit = 3;
+	int timeSinceBreed;
+	bool hasMoved;
 };
 
 #endif /* ANT_H_ */

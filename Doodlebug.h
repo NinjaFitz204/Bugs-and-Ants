@@ -15,10 +15,10 @@ public:
 	Doodlebug(int x,int y);
 	Doodlebug();
 	virtual ~Doodlebug();
-	void move(Organism **gameBoard,size);
+	void move(Organism **gameBoard,int size);
 	int getOrg();
 	int timeSinceBreed;
-	cont int breedLimit;
+	const int breedLimit;
 
 };
 

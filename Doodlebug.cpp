@@ -27,7 +27,7 @@ Doodlebug::~Doodlebug() {
 	// TODO Auto-generated destructor stub
 }
 
-void Doodlebug::move(Organism **gameBoard, size) {
+void Doodlebug::move(Organism **gameBoard, int size) {
 
 	//0 if it cant move, 1 if its open, 2 if its an ant
 	int top = 0;

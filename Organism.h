@@ -12,7 +12,7 @@ class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual void move()=0;
+	virtual void move(Organism **board, int size)=0;
 	int getxcord();
 	int getycord();
 	void setX(int x);

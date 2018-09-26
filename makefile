@@ -41,7 +41,7 @@ endif
 all: PA4_zrfitzgibbon
 
 # Tool invocations
-PA4_zrfitzgibbon: $(OBJS) $(USER_OBJS)
+PA4_zfitzgibbon: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
 	g++  -o "PA4_zrfitzgibbon" $(OBJS) $(USER_OBJS) $(LIBS)
