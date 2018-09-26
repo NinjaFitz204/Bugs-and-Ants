@@ -24,7 +24,7 @@ private:
 	int numBugs;
 	int numAnts;
 	unsigned int seed;
-	Organism** gameBoard;
+	Organism*** gameBoard;
 	int getRnd(int top);
 	void addAnt();
 	void addBug();

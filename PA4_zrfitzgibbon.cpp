@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
 
 		Board *board = new Board(gridSize, numBugs, numAnts, seed);
 		//Board board(gridSize, numBugs, numAnts, seed);
-		board->create();
+		//board->create();
 		board->print();
 
 
