@@ -12,9 +12,9 @@ Ant::Ant(int x, int y){
 	xcord=x;
 	ycord=y;
 	whatOrg=1;
-	const int breedLimit = 3;
-	int timeSinceBreed = 0;
-	bool hasMoved = false;
+	breedLimit = 3;
+	timeSinceBreed = 0;
+	hasMoved = false;
 }
 
 Ant::Ant() {
@@ -22,6 +22,8 @@ Ant::Ant() {
 	xcord=0;
 	ycord=0;
 	whatOrg=1;
+	hasMoved = false;
+	timeSinceBreed = 0;
 
 }
 

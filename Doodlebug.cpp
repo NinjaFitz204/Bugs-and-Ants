@@ -13,6 +13,8 @@ Doodlebug::Doodlebug() {
 	xcord = 0;
 	ycord = 0;
 	whatOrg = 2;
+	timeSinceBreed = 0;
+	breedLimit = 8;
 
 }
 
@@ -21,6 +23,8 @@ Doodlebug::Doodlebug(int x, int y) {
 	xcord = x;
 	ycord = y;
 	whatOrg = 2;
+	timeSinceBreed = 0;
+	breedLimit = 8;
 }
 
 Doodlebug::~Doodlebug() {

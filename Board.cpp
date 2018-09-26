@@ -24,12 +24,13 @@ Board::Board() {
 
 	srand(seed);
 
-	gameBoard = new Organism*[size];
+	Organism* gameBoard[size];
+	//gameBoard = new Organism*[size];
 		//starts with an empty array of organisms, with each step fills the given
 		//space in the array with a new organism, continues until the correct number of
 		//organisms specified by the user has been input into the array
 		for (int i = 0; i < size; ++i) {
-			gameBoard[i] = new Organism[size];
+			gameBoard[i] = NULL;
 		}
 }
 
@@ -46,13 +47,14 @@ Board::Board(int x, int b, int a, unsigned int s) {
 
 	//gameBoard = make2Dorg(size);
 
-	gameBoard = new Organism*[size];
-		//starts with an empty array of organisms, with each step fills the given
-		//space in the array with a new organism, continues until the correct number of
-		//organisms specified by the user has been input into the array
-		for (int i = 0; i < size; ++i) {
-			gameBoard[i] = new Organism[size];
-		}
+	Organism* gameBoard[size];
+		//gameBoard = new Organism*[size];
+			//starts with an empty array of organisms, with each step fills the given
+			//space in the array with a new organism, continues until the correct number of
+			//organisms specified by the user has been input into the array
+			for (int i = 0; i < size; ++i) {
+				gameBoard[i] = NULL;
+			}
 }
 
 /**
@@ -153,7 +155,7 @@ void Board::print(){
 bool Board::isEmpty() {
 	for(int i = 0; i<size; i++) {
 		for(int j=0; j<size; j++) {
-			if (gameBoard[i][j] != 0) {
+			if (gameBoard[i][j].getOrg() != 0) {
 				return false;
 			}
 		}

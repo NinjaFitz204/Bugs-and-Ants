@@ -21,7 +21,7 @@ public:
 	void didMove();
 	int checkOpen(Organism **board, int x, int y);
 private:
-	static const int breedLimit = 3;
+	int breedLimit;
 	int timeSinceBreed;
 	bool hasMoved;
 };

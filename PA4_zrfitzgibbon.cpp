@@ -48,9 +48,10 @@ int main(int argc, char** argv) {
 			break;
 		}*/
 
-		Board board(gridSize, numBugs, numAnts, seed);
-		board.create();
-		board.print();
+		Board *board = new Board(gridSize, numBugs, numAnts, seed);
+		//Board board(gridSize, numBugs, numAnts, seed);
+		board->create();
+		board->print();
 
 
 

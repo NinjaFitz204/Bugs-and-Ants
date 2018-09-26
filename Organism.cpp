@@ -52,3 +52,6 @@ void Organism::setX(int x){
 void Organism::setY(int y){
 	ycord=y;
 }
+void Organism::move(Organism **board, int size) {
+
+}

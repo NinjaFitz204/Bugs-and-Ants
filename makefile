@@ -1,58 +1,22 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
+CXXFLAGS = -g -Wall -fmessage-length=0
 
--include ../makefile.init
+OBJS =	Ant.o Board.o Doodlebug.o Organism.o PA4_zrfitzgibbon.o
 
-RM := rm -rf
+LIBS =
 
-# All of the sources participating in the build are defined here
--include sources.mk
--include src/subdir.mk
--include subdir.mk
--include objects.mk
+TARGET =	PA4_zrfitzgibbon
 
-ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(CC_DEPS)),)
--include $(CC_DEPS)
-endif
-ifneq ($(strip $(C++_DEPS)),)
--include $(C++_DEPS)
-endif
-ifneq ($(strip $(C_UPPER_DEPS)),)
--include $(C_UPPER_DEPS)
-endif
-ifneq ($(strip $(CXX_DEPS)),)
--include $(CXX_DEPS)
-endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
-endif
-ifneq ($(strip $(C_DEPS)),)
--include $(C_DEPS)
-endif
-endif
+$(TARGET):	$(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
 
--include ../makefile.defs
+*.o: *.cpp
+	$(CXX) -c $(CXXFLAGS) *.cpp
 
-# Add inputs and outputs from these tool invocations to the build variables 
+all:	$(TARGET)
 
-# All Target
-all: PA4_zrfitzgibbon
-
-# Tool invocations
-PA4_zfitzgibbon: $(OBJS) $(USER_OBJS)
-	@echo 'Building target: $@'
-	@echo 'Invoking: GCC C++ Linker'
-	g++  -o "PA4_zrfitzgibbon" $(OBJS) $(USER_OBJS) $(LIBS)
-	@echo 'Finished building target: $@'
-	@echo ' '
-
-# Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) PA4_zrfitzgibbon
-	-@echo ' '
+	rm -f $(OBJS) $(TARGET)
 
-.PHONY: all clean dependents
-
--include ../makefile.targets
+# Give command "make docs" to create documentation.	
+docs:
+	doxygen

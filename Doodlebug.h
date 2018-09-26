@@ -18,7 +18,7 @@ public:
 	void move(Organism **gameBoard,int size);
 	int getOrg();
 	int timeSinceBreed;
-	const int breedLimit;
+	int breedLimit;
 
 };
 
