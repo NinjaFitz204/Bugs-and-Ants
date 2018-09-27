@@ -8,11 +8,13 @@
 #ifndef ORGANISM_H_
 #define ORGANISM_H_
 
+#include <vector>
+
 class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual void move(Organism **board, int size)=0;
+	virtual void move(std::vector<std::vector<Organism*>> gameBoard, int size)=0;
 	int getxcord();
 	int getycord();
 	void setX(int x);

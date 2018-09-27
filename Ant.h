@@ -8,6 +8,7 @@
 #ifndef ANT_H_
 #define ANT_H_
 
+#include <vector>
 #include "Organism.h"
 
 class Ant: public Organism {
@@ -15,11 +16,11 @@ public:
 	Ant(int x,int y);
 	Ant();
 	virtual ~Ant();
-	void move(Organism **gameBoard, int size);
+	void move(std::vector<std::vector<Organism*>> board, int size);
 	int getOrg();
 	void resetMove();
 	void didMove();
-	int checkOpen(Organism **board, int x, int y);
+	int checkOpen(std::vector<std::vector<Organism*>> board, int x, int y);
 private:
 	int breedLimit;
 	int timeSinceBreed;

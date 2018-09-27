@@ -7,6 +7,7 @@
 
 #include "Ant.h"
 #include <cstdlib>
+#include <vector>
 
 Ant::Ant(int x, int y){
 	xcord=x;
@@ -31,7 +32,7 @@ Ant::~Ant() {
 	// TODO Auto-generated destructor stub
 }
 
-void Ant::move(Organism **board, int size){
+void Ant::move(std::vector<std::vector<Organism*>> board, int size){
 	int canMove = 0;
 	int moveRight = 0;
 	int moveLeft = 0;
@@ -82,8 +83,8 @@ void Ant::move(Organism **board, int size){
 	timeSinceBreed++;
 }
 
-int Ant::checkOpen(Organism **board, int x, int y) {
-	if (board[x][y].getOrg() == 0) {
+int Ant::checkOpen(std::vector<std::vector<Organism*>> board, int x, int y) {
+	if (board[x][y]->getOrg() == 0) {
 		return 1;
 	}
 	else {

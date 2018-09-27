@@ -9,6 +9,7 @@
 #define BOARD_H_
 
 #include "Organism.h"
+#include<vector>
 #include <bits/stdc++.h>
 
 class Board {
@@ -24,7 +25,7 @@ private:
 	int numBugs;
 	int numAnts;
 	unsigned int seed;
-	Organism*** gameBoard;
+	std::vector<std::vector<Organism*>> gameBoard;
 	int getRnd(int top);
 	void addAnt();
 	void addBug();

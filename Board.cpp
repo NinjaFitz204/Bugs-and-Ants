@@ -12,6 +12,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -24,14 +25,18 @@ Board::Board() {
 
 	srand(seed);
 
-	Organism** gameBoard[size];
+	//gameBoard[size][size];
 	//gameBoard = new Organism*[size];
 	//starts with an empty array of organisms, with each step fills the given
 	//space in the array with a new organism, continues until the correct number of
 	//organisms specified by the user has been input into the array
-	for (int i = 0; i < size; ++i) {
-		gameBoard[i] = NULL;
-	}
+//	for (int i = 0; i < size; ++i) {
+//		for(int j =0; j<size; ++j){
+//			&gameBoard[i][j] = NULL;
+//		}
+//	}
+
+	gameBoard.resize(size, vector<Organism*>(size));
 
 	for (int i = 0; i < numBugs; i++) {
 		addBug();
@@ -55,14 +60,19 @@ Board::Board(int x, int b, int a, unsigned int s) {
 
 	//gameBoard = make2Dorg(size);
 
-	Organism* gameBoard[size];
+	//gameBoard[size][size];
 	//gameBoard = new Organism*[size];
 	//starts with an empty array of organisms, with each step fills the given
 	//space in the array with a new organism, continues until the correct number of
 	//organisms specified by the user has been input into the array
-	for (int i = 0; i < size; ++i) {
-		gameBoard[i] = NULL;
-	}
+//	for (int i = 0; i < size; ++i) {
+//		for(int j = 0; j<size; ++j){
+//			&gameBoard[i][j] = NULL;
+//		}
+//	}
+
+	gameBoard.resize(size, vector<Organism*>(size));
+
 	for (int i = 0; i < numBugs; i++) {
 		addBug();
 	}
@@ -92,7 +102,7 @@ void Board::create() {
  * @return the random number
  */
 int Board::getRnd(int top) {
-	return rand()%top;
+	return rand() % top;
 }
 
 /**
@@ -103,21 +113,23 @@ void Board::addBug() {
 	int xval;
 	int yval;
 
-
-	while (!isEmpty) {//loop invarient is that isEmpty = false
+	while (!isEmpty) {	//loop invarient is that isEmpty = false
 		xval = getRnd(size);
 		yval = getRnd(size);
 
-		if (gameBoard[xval][yval]->whatOrg > 0) {
+		if (gameBoard[xval][yval] == NULL) {
+			break;
+		}
+		if (gameBoard.at(xval).at(yval)->whatOrg > 0) {
 			isEmpty = false;
 		} else {
 			isEmpty = true;
 		}
 	}
 
-	Doodlebug *bug;
-	bug=new Doodlebug(xval,yval);
-	gameBoard[xval][yval] = bug;
+	Organism *bug;
+	bug = new Doodlebug(xval, yval);
+	gameBoard.at(xval).at(yval) = bug;
 }
 
 /**
@@ -128,10 +140,15 @@ void Board::addAnt() {
 	int xval;
 	int yval;
 
-	while (!isEmpty) {//loop invarient is that isEmpty = false
+
+	while (!isEmpty) {	//loop invarient is that isEmpty = false
 		xval = getRnd(size);
 		yval = getRnd(size);
 
+
+		if (gameBoard[xval][yval] == NULL) {
+				break;
+			}
 		if (gameBoard[xval][yval]->whatOrg > 0) {
 			isEmpty = false;
 		} else {
@@ -139,8 +156,8 @@ void Board::addAnt() {
 		}
 	}
 
-	Ant* ant;
-	ant = new Ant(xval,yval);
+	Organism* ant;
+	ant = new Ant(xval, yval);
 	gameBoard[xval][yval] = ant;
 }
 
@@ -151,25 +168,30 @@ Board::~Board() {
 /**
  * prints the board as x's and o's
  */
-void Board::print(){
-	for(int i = 0;i<size;i++){
-		for(int j=0;j<size;j++){
-			if(gameBoard[i][j]->getOrg() == 0){
-				cout << ' ';
-			}if(gameBoard[i][j]->getOrg() == 1){
+void Board::print() {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			bool didPrint = false;
+
+			if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg() == 1) {
 				cout << 'x';
-			}if(gameBoard[i][j]->getOrg() == 2){
+				didPrint = true;
+			}
+			if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg() == 2) {
 				cout << 'o';
+				didPrint = true;
+			}
+			if(!didPrint){
+				cout << ' ';
 			}
 		}
 		cout << endl;
 	}
 }
 
-
 bool Board::isEmpty() {
-	for(int i = 0; i<size; i++) {
-		for(int j=0; j<size; j++) {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
 			if (gameBoard[i][j]->getOrg() != 0) {
 				return false;
 			}
