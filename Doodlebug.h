@@ -18,6 +18,7 @@ public:
 	virtual ~Doodlebug();
 	std::vector<std::vector<Organism*>> move(std::vector<std::vector<Organism*>> gameBoard,int size);
 	int getOrg();
+	int checkMove(int xcord,int ycord,std::vector<std::vector<Organism*>> gameBoard, int size);
 	int timeSinceBreed;
 	int breedLimit;
 	bool hasMoved;
