@@ -52,6 +52,8 @@ int main(int argc, char** argv) {
 		//Board board(gridSize, numBugs, numAnts, seed);
 		//board->create();
 		board->print();
+		board -> move();
+		board -> print();
 
 
 	return 0;

@@ -38,7 +38,7 @@ Doodlebug::~Doodlebug() {
 	// TODO Auto-generated destructor stub
 }
 
-int checkMove(int x, int y, std::vector<std::vector<Organism*>> gameBoard,
+int Doodlebug::checkMove(int x, int y, std::vector<std::vector<Organism*>> gameBoard,
 		int size) {
 
 	int place = 0;
@@ -47,9 +47,9 @@ int checkMove(int x, int y, std::vector<std::vector<Organism*>> gameBoard,
 	if (x >= size || y >= size)
 		return place;
 
-	if (gameBoard[x][y]->getOrg() == 0)
+	if (gameBoard[x][y] == NULL)
 		place = 1;
-	if (gameBoard[x][y]->getOrg() == 1)
+	if (gameBoard[x][y] != NULL && gameBoard[x][y]->getOrg() == 1)
 		place = 2;
 
 	return place;
@@ -292,7 +292,7 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 		int sum = moves[0] + moves[1] + moves[2] + moves[3];
 
 		if (sum == 0) { // leaves method if it cant breed
-			break;
+			return gameBoard;
 		}
 
 		int rnd1;

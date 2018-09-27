@@ -98,8 +98,9 @@ std::vector<std::vector<Organism*>> Ant::move(std::vector<std::vector<Organism*>
 
 }
 
+//
 int Ant::checkOpen(std::vector<std::vector<Organism*>> board, int x, int y) {
-	if (board[x][y]->getOrg() == 0) {
+	if (board[x][y] == NULL) {
 		return 1;
 	}
 	else {

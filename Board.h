@@ -20,6 +20,7 @@ public:
 	void create();
 	void print();
 	bool isEmpty();
+	void move();
 private:
 	int size;
 	int numBugs;

@@ -187,6 +187,7 @@ void Board::print() {
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
 
 bool Board::isEmpty() {
@@ -198,4 +199,14 @@ bool Board::isEmpty() {
 		}
 	}
 	return true;
+}
+
+void Board::move(){
+	for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				if(gameBoard[i][j] != NULL)
+					gameBoard = gameBoard[i][j]->move(gameBoard,size);
+			}
+		}
+
 }
