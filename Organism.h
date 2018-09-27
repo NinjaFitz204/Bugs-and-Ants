@@ -14,7 +14,7 @@ class Organism {
 public:
 	Organism();
 	virtual ~Organism();
-	virtual void move(std::vector<std::vector<Organism*>> gameBoard, int size)=0;
+	virtual std::vector<std::vector<Organism*>> move(std::vector<std::vector<Organism*>> gameBoard, int size)=0;
 	int getxcord();
 	int getycord();
 	void setX(int x);

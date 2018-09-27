@@ -16,10 +16,13 @@ public:
 	Doodlebug(int x,int y);
 	Doodlebug();
 	virtual ~Doodlebug();
-	void move(std::vector<std::vector<Organism*>> gameBoard,int size);
+	std::vector<std::vector<Organism*>> move(std::vector<std::vector<Organism*>> gameBoard,int size);
 	int getOrg();
 	int timeSinceBreed;
 	int breedLimit;
+	bool hasMoved;
+	const int starveLim;
+	int starveCount;
 
 };
 
