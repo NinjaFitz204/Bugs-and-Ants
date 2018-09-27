@@ -54,7 +54,6 @@ int main(int argc, char** argv) {
 		board->print();
 
 
-
 	return 0;
 
 }
