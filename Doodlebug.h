@@ -21,7 +21,7 @@ public:
 	int timeSinceBreed;
 	int breedLimit;
 	bool hasMoved;
-	const int starveLim;
+	int starveLim;
 	int starveCount;
 
 };

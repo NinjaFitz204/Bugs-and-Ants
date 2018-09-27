@@ -16,7 +16,7 @@ public:
 	Ant(int x,int y);
 	Ant();
 	virtual ~Ant();
-	void move(std::vector<std::vector<Organism*>> board, int size);
+	std::vector<std::vector<Organism*>> move(std::vector<std::vector<Organism*>> gameBoard,int size);
 	int getOrg();
 	void resetMove();
 	void didMove();

@@ -8,6 +8,7 @@
 #include "Ant.h"
 #include <cstdlib>
 #include <vector>
+using namespace std;
 
 Ant::Ant(int x, int y){
 	xcord=x;
@@ -24,6 +25,7 @@ Ant::Ant() {
 	ycord=0;
 	whatOrg=1;
 	hasMoved = false;
+	breedLimit = 3;
 	timeSinceBreed = 0;
 
 }
@@ -32,13 +34,15 @@ Ant::~Ant() {
 	// TODO Auto-generated destructor stub
 }
 
-void Ant::move(std::vector<std::vector<Organism*>> board, int size){
+std::vector<std::vector<Organism*>> Ant::move(std::vector<std::vector<Organism*>> board, int size){
 	int canMove = 0;
 	int moveRight = 0;
 	int moveLeft = 0;
 	int moveUp = 0;
 	int moveDown = 0;
 	bool done = false;
+	int newX = 0;
+	int newY = 0;
 	if (xcord < size -1) {
 		moveRight = checkOpen(board, xcord + 1, ycord) * 2;
 		canMove++;
@@ -66,21 +70,32 @@ void Ant::move(std::vector<std::vector<Organism*>> board, int size){
 		}
 		switch(randomIndex) {
 		case 2:
-			xcord++;
+			newX = xcord + 1;
+			newY = ycord;
 			break;
 		case 3:
-			xcord--;
+			newX = xcord - 1;
+			newY = ycord;
 			break;
 		case 4:
-			ycord++;
+			newX = xcord;
+			newY = ycord + 1;
 			break;
 		case 5:
-			ycord --;
+			newX = xcord;
+			newY = ycord - 1;
 			break;
 		}
+		board[newX][newY] = this;
+		board[xcord][ycord] = NULL;
+		timeSinceBreed++;
+		return board;
 
 	}
+
 	timeSinceBreed++;
+	return board;
+
 }
 
 int Ant::checkOpen(std::vector<std::vector<Organism*>> board, int x, int y) {
