@@ -9,6 +9,9 @@
 #include <vector>
 using namespace std;
 
+/**
+ * basic constructor
+ */
 Doodlebug::Doodlebug() {
 	// TODO Auto-generated constructor stub
 	xcord = 0;
@@ -22,6 +25,11 @@ Doodlebug::Doodlebug() {
 
 }
 
+/**
+ * constructor with params
+ * @param x xcord of bug
+ * @param y ycord of bug
+ */
 Doodlebug::Doodlebug(int x, int y) {
 
 	xcord = x;
@@ -34,10 +42,16 @@ Doodlebug::Doodlebug(int x, int y) {
 	hasMoved = false;
 }
 
+/**
+ * deconstructor
+ */
 Doodlebug::~Doodlebug() {
 	// TODO Auto-generated destructor stub
 }
 
+/**
+ * checks to see if the doodlebug can move to the specified spot
+ */
 int Doodlebug::checkMove(int x, int y, std::vector<std::vector<Organism*>> gameBoard,
 		int size) {
 
@@ -56,6 +70,9 @@ int Doodlebug::checkMove(int x, int y, std::vector<std::vector<Organism*>> gameB
 
 }
 
+/**
+ * moves the bug to an open spot
+ */
 std::vector<std::vector<Organism*>> Doodlebug::move(
 		std::vector<std::vector<Organism*>> gameBoard, int size) {
 
@@ -67,146 +84,6 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 
 	if (hasMoved)
 		return gameBoard;
-
-//	if (xcord == 0 && ycord == 0) { //top leftcorner
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	} else if (xcord == 0 && ycord == size - 1) { //bottom left corner
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//
-//	} else if (xcord == size - 1 && ycord == 0) { //top right corner
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	} else if (xcord == size - 1 && ycord == size - 1) { // bottom right corner
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//
-//	} else if (xcord == 0) { //left coloum
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	} else if (xcord == size) { //right colloum
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	} else if (ycord == 0) { //top row
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	} else if (ycord == size) { //bottom row
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//
-//	} else { //middle of the board
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 0)
-//			right = 1;
-//		if (gameBoard[xcord + 1][ycord]->getOrg() == 1) {
-//			right = 2;
-//		}
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 0)
-//			left = 1;
-//		if (gameBoard[xcord - 1][ycord]->getOrg() == 1) {
-//			left = 2;
-//		}
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 0)
-//			top = 1;
-//		if (gameBoard[xcord][ycord - 1]->getOrg() == 1) {
-//			top = 2;
-//		}
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 0)
-//			bot = 1;
-//		if (gameBoard[xcord][ycord + 1]->getOrg() == 1) {
-//			bot = 2;
-//		}
-//
-//	}
 
 	right = checkMove(xcord + 1, ycord, gameBoard, size);
 	left = checkMove(xcord - 1, ycord, gameBoard, size);
@@ -331,6 +208,10 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 
 }
 
+/**
+ * returns the kind of org it is
+ * @return 2
+ */
 int Doodlebug::getOrg() {
 	return whatOrg;
 }

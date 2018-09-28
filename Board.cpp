@@ -16,6 +16,9 @@
 
 using namespace std;
 
+/**
+ * constructor with no args
+ */
 Board::Board() {
 	// TODO Auto-generated constructor stub
 	size = 20;
@@ -48,6 +51,13 @@ Board::Board() {
 
 }
 
+/**
+ * constructor with args
+ * @param x size of the board
+ * @param b num bugs
+ * @param a num ants
+ * @param s seed
+ */
 Board::Board(int x, int b, int a, unsigned int s) {
 	size = x;
 	numAnts = a;
@@ -84,19 +94,6 @@ Board::Board(int x, int b, int a, unsigned int s) {
 
 }
 
-/**
- * creates board full of Ants and Doodlebugs
- */
-void Board::create() {
-
-	for (int i = 0; i < numBugs; i++) {
-		addBug();
-	}
-	for (int i = 0; i < numAnts; i++) {
-		addAnt();
-	}
-
-}
 
 /**
  * gets a random number to get place for ants and doodlebugs
@@ -161,6 +158,9 @@ void Board::addAnt() {
 	gameBoard[xval][yval] = ant;
 }
 
+/**
+ * deconstructor
+ */
 Board::~Board() {
 	// TODO Auto-generated destructor stub
 }
@@ -190,6 +190,9 @@ void Board::print() {
 	cout << endl;
 }
 
+/**
+ * checks to see if there are no ants
+ */
 bool Board::noAnts() {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
@@ -201,6 +204,9 @@ bool Board::noAnts() {
 	return true;
 }
 
+/**
+ * checks to see if there are no bugs
+ */
 bool Board::noBugs() {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
@@ -212,7 +218,9 @@ bool Board::noBugs() {
 	return true;
 }
 
-
+/**
+ * moves the board forward one generation
+ */
 void Board::move() {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {

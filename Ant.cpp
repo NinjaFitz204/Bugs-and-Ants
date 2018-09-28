@@ -10,6 +10,11 @@
 #include <vector>
 using namespace std;
 
+/**
+ * constructor that takes the cordinates of the ant
+ * @param x
+ * @param y
+ */
 Ant::Ant(int x, int y) {
 	xcord = x;
 	ycord = y;
@@ -19,6 +24,9 @@ Ant::Ant(int x, int y) {
 	hasMoved = false;
 }
 
+/**
+ * default constructor
+ */
 Ant::Ant() {
 	// TODO Auto-generated constructor stub
 	xcord = 0;
@@ -30,10 +38,16 @@ Ant::Ant() {
 
 }
 
+/**
+ * deconstructor
+ */
 Ant::~Ant() {
 	// TODO Auto-generated destructor stub
 }
 
+/**
+ * moves the ant to an open spot
+ */
 std::vector<std::vector<Organism*>> Ant::move(
 		std::vector<std::vector<Organism*>> board, int size) {
 	if(hasMoved){
@@ -174,7 +188,9 @@ std::vector<std::vector<Organism*>> Ant::move(
 
 }
 
-//
+/**
+ * checks if the specified spot is open
+ */
 int Ant::checkOpen(std::vector<std::vector<Organism*>> board, int x, int y) {
 	if (board[x][y] == NULL) {
 		return 1;
@@ -183,14 +199,23 @@ int Ant::checkOpen(std::vector<std::vector<Organism*>> board, int x, int y) {
 	}
 }
 
+/**
+ * returns the kind of org it is
+ * @return 1
+ */
 int Ant::getOrg() {
 	return whatOrg;
 }
 
+/**
+ * resets the move so it can move again
+ */
 void Ant::resetMove() {
 	hasMoved = false;
 }
-
+/**
+ * makes it so it wont move
+ */
 void Ant::didMove() {
 	hasMoved = true;
 }
