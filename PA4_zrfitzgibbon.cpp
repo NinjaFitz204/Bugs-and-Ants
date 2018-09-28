@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	int steps;
 	int seed;
 	int pause;
-	int turnCount;
+	int turnCount = 0;
 
 
 	switch (argc) { //fallthrough is intended!!!!
