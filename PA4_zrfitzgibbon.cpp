@@ -22,6 +22,7 @@ int main(int argc, char** argv) {
 	int pause;
 	int turnCount = 0;
 
+
 	switch (argc) { //fallthrough is intended!!!!
 	case 1:
 		gridSize = 20;
