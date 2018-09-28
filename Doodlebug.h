@@ -21,7 +21,6 @@ public:
 	int checkMove(int xcord,int ycord,std::vector<std::vector<Organism*>> gameBoard, int size);
 	int timeSinceBreed;
 	int breedLimit;
-	bool hasMoved;
 	int starveLim;
 	int starveCount;
 

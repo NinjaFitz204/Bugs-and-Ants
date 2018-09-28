@@ -237,6 +237,7 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 	int place; //2 if ant, 1 if open
 	if (hasAnt) {
 		place = 2;
+		starveCount = 0;
 	} else {
 		place = 1;
 		starveCount++;
@@ -299,7 +300,8 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 		bool canBreed = false;
 		while (!canBreed) {
 			rnd1 = rand() % 4;
-			if (moves[rnd1] == 0) {
+			if (moves[rnd1] == 1) {
+				timeSinceBreed=0;
 				canBreed=true;
 			}
 		}
@@ -307,15 +309,19 @@ std::vector<std::vector<Organism*>> Doodlebug::move(
 		switch (rnd1) {
 		case 0: // right
 			gameBoard[xcord + 1][ycord] = new Doodlebug(xcord + 1, ycord);
+			gameBoard[xcord + 1][ycord]->hasMoved=true;
 			break;
 		case 1: //left
 			gameBoard[xcord - 1][ycord] = new Doodlebug(xcord - 1, ycord);
+			gameBoard[xcord - 1][ycord]->hasMoved=true;
 			break;
 		case 2: //top
 			gameBoard[xcord][ycord + 1] = new Doodlebug(xcord, ycord+1);
+			gameBoard[xcord][ycord+1]->hasMoved=true;
 			break;
 		case 3: //bot
 			gameBoard[xcord][ycord - 1] = new Doodlebug(xcord, ycord-1);
+			gameBoard[xcord][ycord-1]->hasMoved=true;
 			break;
 		}
 

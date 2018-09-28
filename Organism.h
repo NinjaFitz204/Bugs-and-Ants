@@ -23,6 +23,7 @@ public:
 	int xcord;
 	int ycord;
 	int whatOrg;// 0 if nothing, 1 if ant, 2 if doodlebug
+	bool hasMoved;
 private:
 };
 

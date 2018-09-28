@@ -140,15 +140,13 @@ void Board::addAnt() {
 	int xval;
 	int yval;
 
-
 	while (!isEmpty) {	//loop invarient is that isEmpty = false
 		xval = getRnd(size);
 		yval = getRnd(size);
 
-
 		if (gameBoard[xval][yval] == NULL) {
-				break;
-			}
+			break;
+		}
 		if (gameBoard[xval][yval]->whatOrg > 0) {
 			isEmpty = false;
 		} else {
@@ -181,7 +179,7 @@ void Board::print() {
 				cout << 'o';
 				didPrint = true;
 			}
-			if(!didPrint){
+			if (!didPrint) {
 				cout << ' ';
 			}
 		}
@@ -201,12 +199,25 @@ bool Board::isEmpty() {
 	return true;
 }
 
-void Board::move(){
+void Board::move() {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg()==2)
+				gameBoard = gameBoard[i][j]->move(gameBoard, size);
+		}
+	}
 	for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				if(gameBoard[i][j] != NULL)
-					gameBoard = gameBoard[i][j]->move(gameBoard,size);
+				if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg()==1)
+					gameBoard = gameBoard[i][j]->move(gameBoard, size);
 			}
 		}
+
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (gameBoard[i][j] != NULL)
+				gameBoard[i][j]->hasMoved = false;
+		}
+	}
 
 }

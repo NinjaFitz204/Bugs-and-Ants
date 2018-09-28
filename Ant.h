@@ -24,7 +24,6 @@ public:
 private:
 	int breedLimit;
 	int timeSinceBreed;
-	bool hasMoved;
 };
 
 #endif /* ANT_H_ */
