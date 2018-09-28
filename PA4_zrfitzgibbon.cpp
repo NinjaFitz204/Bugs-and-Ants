@@ -19,8 +19,7 @@ int main(int argc, char** argv) {
 	int steps;
 	int seed;
 	int pause;
-	int turnCount;
-
+	int turnCount = 0;
 
 	switch (argc) { //fallthrough is intended!!!!
 	case 1:
@@ -43,7 +42,7 @@ int main(int argc, char** argv) {
 		pause = atoi(argv[6]);
 		if (pause <= 0) {
 			cout << "pause argument must be > 0" << endl;
-			return(1);
+			return (1);
 		}
 	case 6:
 		seed = atoi(argv[5]);
@@ -71,23 +70,28 @@ int main(int argc, char** argv) {
 	bool checkBugs = board->noBugs();
 
 	if (pause != -1) {
-		while (!checkAnts && !checkBugs && turnCount < pause) {
+		while (!checkAnts && !checkBugs && turnCount < steps) {
 			board->move();
 			turnCount++;
-
+			if (turnCount % pause == 0) {
+				board->print();
+				cout << "In pause- press enter to continue" << endl;
+				getchar();
+			}
 		}
-		board->print();
-		cout << "In pause- press enter to continue" << endl;
-		getchar();
+
 	}
+
 	while (!checkAnts && !checkBugs && turnCount < steps) {
 		board->move();
 		checkAnts = board->noAnts();
 		checkBugs = board->noBugs();
 		turnCount++;
+
 	}
 	board->print();
 	cout << "Game over" << endl;
+	cout << turnCount << endl;
 	if (checkAnts) {
 		cout << "All ants died" << endl;
 	}

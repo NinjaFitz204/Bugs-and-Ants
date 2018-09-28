@@ -22,6 +22,7 @@ Board::Board() {
 	numAnts = 5;
 	numBugs = 100;
 	seed = 1;
+	count  =0;
 
 	srand(seed);
 
@@ -52,6 +53,7 @@ Board::Board(int x, int b, int a, unsigned int s) {
 	numAnts = a;
 	numBugs = b;
 	seed = s;
+	count = 0;
 
 	if (seed == 0)
 		srand(time(0));
@@ -210,6 +212,7 @@ bool Board::noBugs() {
 	return true;
 }
 
+
 void Board::move() {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
@@ -217,6 +220,7 @@ void Board::move() {
 				gameBoard = gameBoard[i][j]->move(gameBoard, size);
 		}
 	}
+
 	for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg()==1)
@@ -230,5 +234,6 @@ void Board::move() {
 				gameBoard[i][j]->hasMoved = false;
 		}
 	}
+	count++;
 
 }

@@ -47,29 +47,37 @@ std::vector<std::vector<Organism*>> Ant::move(
 	int moveUp = 0;
 	int moveDown = 0;
 	bool done = false;
-	int newX = 0;
-	int newY = 0;
+	int newX = xcord;
+	int newY = ycord;
 	if (xcord < size - 1) {
 		moveRight = checkOpen(board, xcord + 1, ycord) * 2;
-		canMove++;
+		if(moveRight){
+			canMove++;
+		}
 	}
 	if (xcord > 0) {
 		moveLeft = checkOpen(board, xcord - 1, ycord) * 3;
-		canMove++;
+		if(moveLeft){
+			canMove++;
+		}
 	}
 	if (ycord < size - 1) {
 		moveDown = checkOpen(board, xcord, ycord + 1) * 4;
-		canMove++;
+		if(moveDown){
+			canMove++;
+		}
 	}
 	if (ycord > 0) {
 		moveUp = checkOpen(board, xcord, ycord - 1) * 5;
-		canMove++;
+		if(moveUp){
+			canMove++;
+		}
 	}
 	int spotsToGo[] = { moveRight, moveLeft, moveUp, moveDown };
 	if (canMove > 0) {
 		int randomIndex;
 		while (!done) {
-			randomIndex = spotsToGo[rand() % 5];
+			randomIndex = spotsToGo[rand() % 4];
 			if (randomIndex) {
 				done = true;
 			}
@@ -146,8 +154,8 @@ std::vector<std::vector<Organism*>> Ant::move(
 			board[xcord + 1][ycord]->hasMoved = true;
 			break;
 		case 3: //left
-			board[xcord + 1][ycord] = new Ant(xcord - 1, ycord);
-			board[xcord + 1][ycord]->hasMoved = true;
+			board[xcord - 1][ycord] = new Ant(xcord - 1, ycord);
+			board[xcord - 1][ycord]->hasMoved = true;
 			break;
 		case 4: //top
 			board[xcord][ycord + 1] = new Ant(xcord, ycord + 1);

@@ -22,6 +22,7 @@ public:
 	bool noAnts();
 	bool noBugs();
 	void move();
+	int count;
 private:
 	int size;
 	int numBugs;
