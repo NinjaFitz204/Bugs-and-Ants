@@ -23,6 +23,7 @@ public:
 	bool noBugs();
 	void move();
 	int count;
+	//khetwkj
 private:
 	int size;
 	int numBugs;
