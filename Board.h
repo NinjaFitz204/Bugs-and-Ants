@@ -23,7 +23,7 @@ public:
 	bool noBugs();
 	void move();
 	int count;
-	//khetwkj
+	//khe
 private:
 	int size;
 	int numBugs;
