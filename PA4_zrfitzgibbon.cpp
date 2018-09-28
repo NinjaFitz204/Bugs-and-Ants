@@ -13,6 +13,7 @@
 using namespace std;
 
 int main(int argc, char** argv) {
+	int testVarialbe = 0; //delete this if you see it
 	int gridSize;
 	int numBugs; //5
 	int numAnts; //100
