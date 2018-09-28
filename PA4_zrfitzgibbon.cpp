@@ -71,15 +71,22 @@ int main(int argc, char** argv) {
 	bool checkBugs = board->noBugs();
 
 	if (pause != -1) {
-		while (!checkAnts && !checkBugs && turnCount < steps) {
+		while (!checkAnts && !checkBugs && turnCount < pause) {
 			board->move();
 			turnCount++;
-			if (turnCount % pause == 0) {
-				board->print();
-				cout << "In pause- press enter to continue" << endl;
-				getchar();
-			}
+			checkAnts = board->noAnts();
+			checkBugs = board->noBugs();
+
 		}
+		board->print();
+		if (checkAnts || checkBugs) {
+			cout << "Organisms did not make it to pause step" << endl;
+		}
+		else {
+			cout << "In pause- press enter to continue" << endl;
+			getchar();
+		}
+
 
 	}
 
@@ -91,7 +98,7 @@ int main(int argc, char** argv) {
 
 	}
 	board->print();
-	cout << "Game over" << endl;
+	cout << "Game over. Turns Played:" << endl;
 	cout << turnCount << endl;
 	if (checkAnts) {
 		cout << "All ants died" << endl;
