@@ -188,10 +188,21 @@ void Board::print() {
 	cout << endl;
 }
 
-bool Board::isEmpty() {
+bool Board::noAnts() {
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
-			if (gameBoard[i][j]->getOrg() != 0) {
+			if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg() == 1) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool Board::noBugs() {
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (gameBoard[i][j] != NULL && gameBoard[i][j]->getOrg() == 2) {
 				return false;
 			}
 		}

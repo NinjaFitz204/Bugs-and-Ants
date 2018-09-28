@@ -19,6 +19,7 @@ int main(int argc, char** argv) {
 	int steps;
 	int seed;
 	int pause;
+	int turnCount;
 
 
 	switch (argc) { //fallthrough is intended!!!!
@@ -33,13 +34,17 @@ int main(int argc, char** argv) {
 	case 5:
 		seed = 1;
 	case 6:
-		pause = 0;
+		pause = -1;
 	case 7:
 		break;
 	}
 	switch (argc) { //fallthrough is intended!!!
 	case 7:
 		pause = atoi(argv[6]);
+		if (pause <= 0) {
+			cout << "pause argument must be > 0" << endl;
+			return(1);
+		}
 	case 6:
 		seed = atoi(argv[5]);
 	case 5:
@@ -54,48 +59,45 @@ int main(int argc, char** argv) {
 		break;
 	}
 
+	if (pause >= steps) {
+		cout << "set pause to less than the number of steps" << endl;
+		return 1;
+	}
 
 	Board *board = new Board(gridSize, numBugs, numAnts, seed);
 	//Board board(gridSize, numBugs, numAnts, seed);
 	//board->create();
-	board->print();
-	board->move();
-	cout << "first print" << endl;
-	board->print();
-	board->move();
-	cout << "second print" << endl;
-	board->print();
-	board->move();
-	cout << "third print" << endl;
-	board->print();
-	board->move();
-	cout << "fourth print" << endl;
-	board->print();
-	board->move();
-	cout << "fith print" << endl;
-	board->print();
-	board->move();
-	cout << "sixth print" << endl;
-	board->print();
-	board->move();
-	cout << "seventh print" << endl;
-	board->print();
-	board->move();
-	cout << "eighth print" << endl;
-	board->print();
-	board->move();
-	cout << "nineth print" << endl;
-	board->print();
-	board->move();
-	cout << "tenth print" << endl;
-	board->print();
-	board->move();
-	cout << "eleventh print" << endl;
-	board->print();
-	board->move();
-	cout << "twelth print" << endl;
-	board->print();
+	bool checkAnts = board->noAnts();
+	bool checkBugs = board->noBugs();
 
+	if (pause != -1) {
+		while (!checkAnts && !checkBugs && turnCount < pause) {
+			board->move();
+			turnCount++;
+
+		}
+		board->print();
+		cout << "In pause- press enter to continue" << endl;
+		getchar();
+	}
+	while (!checkAnts && !checkBugs && turnCount < steps) {
+		board->move();
+		checkAnts = board->noAnts();
+		checkBugs = board->noBugs();
+		turnCount++;
+	}
+	board->print();
+	cout << "Game over" << endl;
+	if (checkAnts) {
+		cout << "All ants died" << endl;
+	}
+	if (checkBugs) {
+		cout << "All bugs died" << endl;
+	}
+	if (turnCount >= steps) {
+		cout << "step limit reached. Limit was:" << endl;
+		cout << steps << endl;
+	}
 	return 0;
 
 }

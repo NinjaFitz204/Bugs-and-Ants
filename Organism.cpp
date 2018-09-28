@@ -12,6 +12,7 @@ Organism::Organism() {
 	xcord = 0;
 	ycord = 0;
 	whatOrg = 0;// o if nothing, 1 if ant, 2 if doodlebug
+	hasMoved = false;
 
 }
 

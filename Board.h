@@ -19,7 +19,8 @@ public:
 	Board(int x,int b, int a,unsigned int s);
 	void create();
 	void print();
-	bool isEmpty();
+	bool noAnts();
+	bool noBugs();
 	void move();
 private:
 	int size;
