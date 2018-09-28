@@ -13,40 +13,47 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-	int gridSize = 2;
-	int numBugs = 1; //5
-	int numAnts = 3; //100
-	int steps = 1000;
-	int seed = 1;
-	int pause = 1;
+	int gridSize;
+	int numBugs; //5
+	int numAnts; //100
+	int steps;
+	int seed;
+	int pause;
 
-	//nkdghkjl
 
-	//char** gameBoard;
+	switch (argc) { //fallthrough is intended!!!!
+	case 1:
+		gridSize = 20;
+	case 2:
+		numBugs = 5;
+	case 3:
+		numAnts = 100;
+	case 4:
+		steps = 1000;
+	case 5:
+		seed = 1;
+	case 6:
+		pause = 0;
+	case 7:
+		break;
+	}
+	switch (argc) { //fallthrough is intended!!!
+	case 7:
+		pause = atoi(argv[6]);
+	case 6:
+		seed = atoi(argv[5]);
+	case 5:
+		steps = atoi(argv[4]);
+	case 4:
+		numAnts = atoi(argv[3]);
+	case 3:
+		numBugs = atoi(argv[2]);
+	case 2:
+		gridSize = atoi(argv[1]);
+	case 1:
+		break;
+	}
 
-	/*for (int i = 0; i < argc; i++) {
-	 switch (i) {
-
-	 case 0:
-	 gridSize = argv[i];
-	 break;
-
-	 case 1:
-	 numBugs = argv[i];
-	 break;
-	 case 2:
-	 numAnts = argv[i];
-	 break;
-	 case 3:
-	 steps = argv[i];
-	 break;
-	 case 4:
-	 seed = argv[i];
-	 break;
-	 case 5:
-	 pause = argv[i];
-	 break;
-	 }*/
 
 	Board *board = new Board(gridSize, numBugs, numAnts, seed);
 	//Board board(gridSize, numBugs, numAnts, seed);
@@ -78,16 +85,16 @@ int main(int argc, char** argv) {
 	board->print();
 	board->move();
 	cout << "nineth print" << endl;
-		board->print();
-		board->move();
-		cout << "tenth print" << endl;
-			board->print();
-			board->move();
-			cout << "eleventh print" << endl;
-				board->print();
-				board->move();
-							cout << "twelth print" << endl;
-								board->print();
+	board->print();
+	board->move();
+	cout << "tenth print" << endl;
+	board->print();
+	board->move();
+	cout << "eleventh print" << endl;
+	board->print();
+	board->move();
+	cout << "twelth print" << endl;
+	board->print();
 
 	return 0;
 
